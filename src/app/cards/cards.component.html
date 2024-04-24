@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+        <div class="col p-3" *ngFor="let Personaje of Personajes">
+            <div class="card">
+                <img src="{{Personaje.img}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{Personaje.nombre}}</h5>
+                  <p class="card-text">{{Personaje.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
