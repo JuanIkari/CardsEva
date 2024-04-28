@@ -1,5 +1,13 @@
-<div>
-  <app-cards>
-  </app-cards>
-</div>
+<section class="details-card" id="productos">
+  <div class="container">
+    <h3>PRODUCTOS</h3>
+    <hr />
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of products">
+        <app-cards [producto]="product"></app-cards>
+      </div>
+    </div>
+  </div>
+</section>
+
 <router-outlet />

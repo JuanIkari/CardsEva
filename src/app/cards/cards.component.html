@@ -1,13 +1,14 @@
-<div class="container">
-    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-        <div class="col p-3" *ngFor="let Personaje of Personajes">
-            <div class="card">
-                <img src="{{Personaje.img}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{Personaje.nombre}}</h5>
-                  <p class="card-text">{{Personaje.descripcion}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="card-content">
+  <div class="card-img">
+    <img src="{{ producto.category.image }}" alt="" />
+    <span>
+      <h4>{{ producto.category.name }}</h4>
+    </span>
+  </div>
+  <div class="card-desc">
+    <h3>{{ producto.title }} ${{ producto.price }}</h3>
+    <p>{{ producto.description }}</p>
+    <button type="button" class="btn btn-primary">Editar</button>
+    <button type="button" class="btn btn-danger">Eliminar</button>
+  </div>
 </div>
