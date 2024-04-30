@@ -11,6 +11,14 @@ export class CardsComponent {
 
   @Input() producto?: any;
 
+  edit(producto:any){
+    console.log(producto)
+  }
+
+  delete(id:number){
+    console.log(id)
+  }
+
 }
 
  
