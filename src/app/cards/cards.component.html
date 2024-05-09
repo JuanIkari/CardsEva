@@ -1,6 +1,6 @@
 <div class="card-content">
   <div class="card-img">
-    <img src="{{ producto.images[0] }}" alt="" />
+    <img [src]="producto.images" (error)="producto.images= '../../assets/img/Image-not-found.png'" alt="" />
     <span>
       <h4>{{ producto.category.name }}</h4>
     </span>
