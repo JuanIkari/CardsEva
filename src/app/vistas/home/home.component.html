@@ -1,0 +1,14 @@
+<section class="details-card" id="productos">
+    <div class="container">
+      <h3>PRODUCTOS</h3>
+      <hr />
+      <button type="button" class="btn btn-success">Agregar producto</button>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+          <app-cards [producto]="product"></app-cards>
+        </div>
+      </div>
+    </div>
+  </section>

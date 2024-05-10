@@ -8,7 +8,7 @@
   <div class="card-desc">
     <h3>{{ producto.title }} ${{ producto.price }}</h3>
     <p>{{ producto.description }}</p>
-    <button type="button" class="btn btn-primary" (click)="edit(producto)">Editar</button>
+    <button type="button" class="btn btn-primary" (click)="edit(producto.id)">Editar</button>
     <button type="button" class="btn btn-danger" (click)="delete(producto.id)">Eliminar</button>
   </div>
 </div>

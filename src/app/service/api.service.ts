@@ -13,4 +13,16 @@ export class ApiService {
   getProducts(){
     return this.http.get(URL);
   }
+
+  getProductById(id: number){
+    return this.http.get(`https://api.escuelajs.co/api/v1/products/${id}`)
+  }
+
+  putProduct(form:any){
+    return this.http.put(`https://api.escuelajs.co/api/v1/products/${form.id}`, form)
+  }
+
+  deleteProduct(id: number){
+    return this.http.delete(`https://api.escuelajs.co/api/v1/products/${id}`)
+  }
 }
