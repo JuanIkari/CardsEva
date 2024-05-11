@@ -19,8 +19,8 @@ export class HomeComponent {
 
   ngOnInit() {
     this.api.getProducts().subscribe((data: any) => {
-      console.log(data);
       this.products = data;
+     
     });
   }
 }

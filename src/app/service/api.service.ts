@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-const URL = "https://api.escuelajs.co/api/v1/products"
-
 @Injectable({
   providedIn: 'root'
 })
@@ -10,19 +8,21 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+   URL = "https://api.escuelajs.co/api/v1/products";
+
   getProducts(){
-    return this.http.get(URL);
+    return this.http.get(this.URL);
   }
 
-  getProductById(id: number){
-    return this.http.get(`https://api.escuelajs.co/api/v1/products/${id}`)
+  getProduct(id:any){
+    return this.http.get(`${this.URL}/${id}`)
   }
 
-  putProduct(form:any){
-    return this.http.put(`https://api.escuelajs.co/api/v1/products/${form.id}`, form)
+  putProduct(product: any){
+    return this.http.put(`${this.URL}/${product.id}`, product)
   }
 
   deleteProduct(id: number){
-    return this.http.delete(`https://api.escuelajs.co/api/v1/products/${id}`)
+    return this.http.delete(`${this.URL}/${id}`)
   }
 }
