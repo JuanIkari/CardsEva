@@ -30,15 +30,15 @@ export class EditarComponent {
   }
  
   onSubmit(){
-    const newProduct = {
+    const editProduct = {
       id: this.info.id,
       title: this.titulo.value,
       price: this.precio.value,
       description: this.descripcion.value
     }
-    console.log(newProduct);
+    console.log(editProduct);
 
-    this.api.putProduct(newProduct).subscribe((data: any) => {
+    this.api.putProduct(editProduct).subscribe((data: any) => {
     });
     this.salir();
   }

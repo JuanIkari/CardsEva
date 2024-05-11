@@ -20,7 +20,10 @@ export class HomeComponent {
   ngOnInit() {
     this.api.getProducts().subscribe((data: any) => {
       this.products = data;
-     
     });
+  }
+
+  addProduct() {
+    this.router.navigate(['agregar']);
   }
 }
