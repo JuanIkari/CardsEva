@@ -8,13 +8,16 @@ import { CardsComponent } from '../cards/cards.component';
 @Component({
   selector: 'app-editar',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CardsComponent,ReactiveFormsModule],
+  imports: [CommonModule, RouterOutlet, CardsComponent, ReactiveFormsModule],
   templateUrl: './editar.component.html',
-  styleUrl: './editar.component.css'
+  styleUrl: './editar.component.css',
 })
 export class EditarComponent {
-
-  constructor(private api: ApiService, private router: Router,  private route: ActivatedRoute,) {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   info: any;
 
@@ -22,29 +25,26 @@ export class EditarComponent {
   precio = new FormControl('');
   descripcion = new FormControl('');
 
-  ngOnInit(){
+  ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     this.api.getProduct(id).subscribe((data: any) => {
       this.info = data;
     });
   }
- 
-  onSubmit(){
+
+  onSubmit() {
     const editProduct = {
       id: this.info.id,
       title: this.titulo.value,
       price: this.precio.value,
-      description: this.descripcion.value
-    }
-    console.log(editProduct);
+      description: this.descripcion.value,
+    };
 
-    this.api.putProduct(editProduct).subscribe((data: any) => {
-    });
+    this.api.putProduct(editProduct).subscribe((data: any) => {});
     this.salir();
   }
 
   salir() {
     this.router.navigate(['']);
   }
-
 }

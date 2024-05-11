@@ -30,9 +30,8 @@ export class AgregarComponent {
       categoryId: this.categoria.value,
       images: [this.imagen.value]
     }
-console.log(newProduct);
+
     this.api.postProduct(newProduct).subscribe(data => {
-      console.log(data);
     });
    this.salir();
   }
