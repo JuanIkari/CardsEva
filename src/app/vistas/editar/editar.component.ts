@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ApiService } from '../../service/api.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CardsComponent } from '../cards/cards.component';
 
@@ -21,29 +21,42 @@ export class EditarComponent {
 
   info: any;
 
-  titulo = new FormControl('');
-  precio = new FormControl('');
-  descripcion = new FormControl('');
+  editForm = new FormGroup({
+  id: new FormControl(''),
+  title: new FormControl(''),
+  price: new FormControl(''),
+  description: new FormControl(''),
+  images: new FormControl(''),
+  });
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.api.getProduct(id).subscribe((data: any) => {
-      this.info = data;
+    let productoId = this.route.snapshot.paramMap.get('id');
+    this.api.getProduct(productoId).subscribe((data: any) => {
+      this.editForm.setValue({
+        id: data.id,
+        title: data.title,
+        price: data.price,
+        description: data.description,
+        images: data.images[0],
+      });
     });
   }
 
-  onSubmit() {
-    const editProduct = {
-      id: this.info.id,
-      title: this.titulo.value,
-      price: this.precio.value,
-      description: this.descripcion.value,
+  onSubmit(form:any) {  
+    const producto = {
+      id: this.editForm.value.id,
+      title: form.title,
+      price: form.price,
+      description: form.description,
+      images: [form.images],
     };
 
-    this.api.putProduct(editProduct).subscribe((data: any) => {
-    this.salir();
+    this.api.putProduct(producto).subscribe((data: any) => {
+      console.log(data);
+      this.salir();
     });
   }
+    
 
   salir() {
     this.router.navigate(['']);

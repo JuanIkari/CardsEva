@@ -1,5 +1,5 @@
 <div class="container-formulario">
-  <div class="editar-form">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)" class="editar-form">
     <h1>Editar Producto</h1>
     <div class="form-group">
       <label for="titulo">Titulo</label>
@@ -8,7 +8,7 @@
         class="form-control"
         id="titulo"
         placeholder="Titulo del producto"
-        [formControl]="titulo"
+        formControlName="title"
       />
     </div>
     <div class="form-group">
@@ -18,7 +18,7 @@
         class="form-control"
         id="precio"
         placeholder="Precio del producto"
-        [formControl]="precio"
+        formControlName="price"
       />
     </div>
     <div class="form-group">
@@ -28,13 +28,23 @@
         class="form-control"
         id="descripcion"
         placeholder="Descripcion del producto"
-        [formControl]="descripcion"
+        formControlName="description"
+      />
+    </div>
+    <div class="form-group">
+      <label for="img">Imagen (URL)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="img"
+        placeholder="Descripcion del producto"
+        formControlName="images"
       />
     </div>
     <br><br>
-    <button class="btn btn-primary" (click)="onSubmit()">Guardar</button>
+    <button class="btn btn-primary">Guardar</button>
     <button type="button" class="btn btn-dark" (click)="salir()">Salir</button>
   
   
-  </div>
+  </form>
 </div>
