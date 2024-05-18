@@ -40,8 +40,9 @@ export class EditarComponent {
       description: this.descripcion.value,
     };
 
-    this.api.putProduct(editProduct).subscribe((data: any) => {});
+    this.api.putProduct(editProduct).subscribe((data: any) => {
     this.salir();
+    });
   }
 
   salir() {

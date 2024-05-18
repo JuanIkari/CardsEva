@@ -32,8 +32,8 @@ export class AgregarComponent {
     }
 
     this.api.postProduct(newProduct).subscribe(data => {
+    this.salir();
     });
-   this.salir();
   }
 
   salir(){
