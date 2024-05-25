@@ -8,13 +8,16 @@ import { CardsComponent } from '../cards/cards.component';
 @Component({
   selector: 'app-agregar',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CardsComponent,ReactiveFormsModule],
+  imports: [CommonModule, RouterOutlet, CardsComponent, ReactiveFormsModule],
   templateUrl: './agregar.component.html',
-  styleUrl: './agregar.component.css'
+  styleUrl: './agregar.component.css',
 })
 export class AgregarComponent {
-
-  constructor(private api: ApiService, private router: Router,  private route: ActivatedRoute,) {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   titulo = new FormControl('');
   precio = new FormControl('');
@@ -22,22 +25,21 @@ export class AgregarComponent {
   categoria = new FormControl();
   imagen = new FormControl('');
 
-  onSubmit(){
+  onSubmit() {
     const newProduct = {
       title: this.titulo.value,
       price: this.precio.value,
       description: this.descripcion.value,
-      categoryId: this.categoria.value,
-      images: [this.imagen.value]
-    }
+      category: this.categoria.value,
+      images: [this.imagen.value],
+    };
 
-    this.api.postProduct(newProduct).subscribe(data => {
-    this.salir();
+    this.api.postProduct(newProduct).subscribe((data) => {
+      this.salir();
     });
   }
 
-  salir(){
+  salir() {
     this.router.navigate(['']);
   }
-
 }

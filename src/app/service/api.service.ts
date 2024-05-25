@@ -2,31 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  /* URL = 'https://api.escuelajs.co/api/v1/products'; */
+  URL = 'http://localhost:3000/products';
 
-   URL = "https://api.escuelajs.co/api/v1/products";
-
-  getProducts(){
+  getProducts() {
     return this.http.get(this.URL);
   }
 
-  getProduct(id:any){
-    return this.http.get(`${this.URL}/${id}`)
+  getProduct(id: any) {
+    return this.http.get(`${this.URL}/${id}`);
   }
 
-  putProduct(product: any){
-    return this.http.put(`${this.URL}/${product.id}`, product)
+  putProduct(product: any) {
+    return this.http.put(`${this.URL}/${product.id}`, product);
   }
 
-  deleteProduct(id: number){
-    return this.http.delete(`${this.URL}/${id}`)
+  deleteProduct(id: number) {
+    return this.http.delete(`${this.URL}/${id}`);
   }
 
-  postProduct(product: any){
-    return this.http.post(`${this.URL}/`, product)
+  postProduct(product: any) {
+    return this.http.post(`${this.URL}/`, product);
   }
 }
